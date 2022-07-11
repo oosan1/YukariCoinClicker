@@ -19,7 +19,7 @@ scene.add(light);
 
 const coin_group = new THREE.Group();
 loader = new THREE.TextureLoader()
-let coin_texture = loader.load("/texture/yukariCoin-Borderless_400PNG1.png");
+let coin_texture = loader.load("./texture/yukariCoin-Borderless_400PNG1.png");
 coin_texture.minFilter = THREE.LinearFilter; 
 coin_texture.magFilter = THREE.LinearFilter;
 coin_material = new THREE.MeshBasicMaterial({ map: coin_texture,
