@@ -114,7 +114,7 @@ function waitFunc() {
     });
 };
 
-//背景コインのテクスチャ
+//コインのテクスチャ
 function TextureAnim() {
     coin_texture = loader.load("./texture/video/" + texture_count + ".png");
     coin_texture.minFilter = THREE.LinearFilter; 
