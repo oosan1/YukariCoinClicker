@@ -402,7 +402,6 @@ function endcredits_word(title, name) {
 function allreset() {
     coin_every_second = 0; //コイン毎秒
     coin_click_per = 1; //クリック毎コイン
-    coin_count = 0;
     const end_title = document.getElementById("end_title");
     const end_name = document.getElementById("end_name");
     const count = document.getElementById("count");
