@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>ゆかりコインクリッカー</title>
+        <script src="https://unpkg.com/three@0.142.0/build/three.min.js"></script>
+    </head>
+    <body id="body">
+        <canvas id="graphics"></canvas>
+        <div id="overlay">
+            <input id="coin" type="image" tabindex="-1" src="./texture/yukariCoin-Borderless_400PNG1.png" alt="コイン">
+            
+            <input class="power_up" id="kiri" type="image" tabindex="-1" src="./texture/UI/きりたん.png" alt="きりたん" title="???">
+            <input class="power_up" id="zun" type="image" tabindex="-1" src="./texture/UI/ずんだ.png" alt="ずんだ" title="???">
+            <input class="power_up" id="ita" type="image" tabindex="-1" src="./texture/UI/いたこ.png" alt="いたこ" title="???">
+            <input class="power_up" id="maki" type="image" tabindex="-1" src="./texture/UI/まき.png" alt="まき" title="???">
+            <input class="power_up" id="aka" type="image" tabindex="-1" src="./texture/UI/あかり.png" alt="あかり" title="???">
+            <input class="power_up" id="koto" type="image" tabindex="-1" src="./texture/UI/ことのは.png" alt="ことのは" title="???">
+            <input id="yuka" type="image" tabindex="-1" src="./texture/UI/ゆかり.png" alt="ゆかり" title="見つかった！？ちょっと待ってて">
+
+            <div id="count">0</div>
+            <div id="every">0 yc/s</div>
+            <div id="per">0 yc/c</div>
+            <div id="end_title"></div>
+            <div id="end_name"></div>
+        </div>
+        <div id="end_overlay"></div>
+        <script src="./class.js"></script>
+        <script src="./script.js"></script>
+    </body>
+</html>

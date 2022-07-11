@@ -1,0 +1,470 @@
+@font-face {
+    font-family:"misakigothic";
+    src: url("./font/misaki_gothic_2nd.eot");
+    src: url("./font/misaki_gothic_2nd.woff") format("woff"),
+    url("./font/misaki_gothic_2nd.ttf") format("truetype");
+}
+
+#body {
+    margin: 0;
+    overflow: hidden;
+    background-image: url(./texture/BG.png);
+}
+
+#body.end {
+    margin: 0;
+    overflow: hidden;
+    background-image: url(./texture/BG_end.png);
+}
+
+#overlay {
+    position: absolute;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+  }
+
+    #overlay #coin {
+        position: absolute;
+        left: 50%; top: 50%; 
+        width: 576px;
+        transform: translate(-50%, -50%);
+        display: block;
+        user-select: none;
+    }
+
+    #overlay #coin:active:not(.invisible) {
+        animation: animCoin 3s infinite ease-out;
+        transform-origin: 0% 0%;
+        animation-play-state:running;
+    }
+
+    #overlay .power_up {
+        position: absolute;
+        margin-right: -370px;
+        width: 384px;
+        display: block;
+        user-select: none;
+    }
+
+        #overlay #kiri {
+            right: 0; top: 5%;
+            pointer-events: all;
+        }
+        #overlay #kiri.over:not(.invisible) {
+            pointer-events: all;
+            opacity: 100%;
+        }
+        #overlay #kiri:not(.over):not(.invisible) {
+            pointer-events: all;
+            opacity: 30%;
+        }
+        #overlay #kiri:hover.over {
+            animation-name: animLvButton;
+            animation-duration: 1s;
+            animation-fill-mode:forwards;
+            transform-origin: 0% 0%;
+            animation-play-state:running;
+        }
+        #overlay #kiri.invisible {
+            pointer-events: none;
+            animation-name: animInvisible;
+            animation-duration: 3s;
+            animation-fill-mode:forwards;
+            transform-origin: 0% 0%;
+            animation-play-state:running;
+        }
+
+        #overlay #zun {
+            pointer-events: all;
+            right: 0; top: 20%;
+        }
+        #overlay #zun.over:not(.invisible) {
+            pointer-events: all;
+            opacity: 100%;
+        }
+        #overlay #zun:not(.over):not(.invisible) {
+            pointer-events: all;
+            opacity: 30%;
+        }
+        #overlay #zun:hover.over {
+            animation-name: animLvButton;
+            animation-duration: 1s;
+            animation-fill-mode:forwards;
+            transform-origin: 0% 0%;
+            animation-play-state:running;
+        }
+        #overlay #zun.invisible {
+            pointer-events: none;
+            animation-name: animInvisible;
+            animation-duration: 3s;
+            animation-fill-mode:forwards;
+            transform-origin: 0% 0%;
+            animation-play-state:running;
+        }
+
+        #overlay #ita {
+            pointer-events: all;
+            right: 0; top: 35%;
+        }
+        #overlay #ita.over:not(.invisible) {
+            pointer-events: all;
+            opacity: 100%;
+        }
+        #overlay #ita:not(.over):not(.invisible) {
+            pointer-events: all;
+            opacity: 30%;
+        }
+        #overlay #ita:hover.over {
+            animation-name: animLvButton;
+            animation-duration: 1s;
+            animation-fill-mode:forwards;
+            transform-origin: 0% 0%;
+            animation-play-state:running;
+        }
+        #overlay #ita.invisible {
+            pointer-events: none;
+            animation-name: animInvisible;
+            animation-duration: 3s;
+            animation-fill-mode:forwards;
+            transform-origin: 0% 0%;
+            animation-play-state:running;
+        }
+
+        #overlay #maki {
+            pointer-events: all;
+            right: 0; top: 50%;
+        }
+        #overlay #maki.over:not(.invisible) {
+            pointer-events: all;
+            opacity: 100%;
+        }
+        #overlay #maki:not(.over):not(.invisible) {
+            pointer-events: all;
+            opacity: 30%;
+        }
+        #overlay #maki:hover.over {
+            animation-name: animLvButton;
+            animation-duration: 1s;
+            animation-fill-mode:forwards;
+            transform-origin: 0% 0%;
+            animation-play-state:running;
+        }
+        #overlay #maki.invisible {
+            pointer-events: none;
+            animation-name: animInvisible;
+            animation-duration: 3s;
+            animation-fill-mode:forwards;
+            transform-origin: 0% 0%;
+            animation-play-state:running;
+        }
+
+        #overlay #aka {
+            pointer-events: all;
+            right: 0; top: 65%;
+        }
+        #overlay #aka.over:not(.invisible) {
+            pointer-events: all;
+            opacity: 100%;
+        }
+        #overlay #aka:not(.over):not(.invisible) {
+            pointer-events: all;
+            opacity: 30%;
+        }
+        #overlay #aka:hover.over {
+            animation-name: animLvButton;
+            animation-duration: 1s;
+            animation-fill-mode:forwards;
+            transform-origin: 0% 0%;
+            animation-play-state:running;
+        }
+        #overlay #aka.invisible {
+            pointer-events: none;
+            animation-name: animInvisible;
+            animation-duration: 3s;
+            animation-fill-mode:forwards;
+            transform-origin: 0% 0%;
+            animation-play-state:running;
+        }
+
+        #overlay #koto {
+            pointer-events: all;
+            right: 0; top: 80%;
+        }
+        #overlay #koto.over:not(.invisible) {
+            pointer-events: all;
+            opacity: 100%;
+        }
+        #overlay #koto:not(.over):not(.invisible) {
+            pointer-events: all;
+            opacity: 30%;
+        }
+        #overlay #koto:hover.over {
+            animation-name: animLvButton;
+            animation-duration: 1s;
+            animation-fill-mode:forwards;
+            transform-origin: 0% 0%;
+            animation-play-state:running;
+        }
+        #overlay #koto.invisible {
+            pointer-events: none;
+            animation-name: animInvisible;
+            animation-duration: 3s;
+            animation-fill-mode:forwards;
+            transform-origin: 0% 0%;
+            animation-play-state:running;
+        }
+
+    #overlay #count {
+        animation-name: animOverlay;
+        animation-duration: 1s;
+        animation-fill-mode:forwards;
+        transform-origin: 0% 0%;
+        animation-play-state:running;
+        position: absolute;
+        left: 50%; top: 12%; 
+        width: 100%;
+        transform: translate(-50%, -50%);
+        color: rgb(0, 0, 0);
+        font-family:"misakigothic";
+        font-size: 120px;
+        text-align: center;
+        display: block;
+        user-select: none;
+        pointer-events:none;
+    }
+
+    #overlay #every {
+        animation-name: animOverlay;
+        animation-duration: 1s;
+        animation-fill-mode:forwards;
+        transform-origin: 0% 0%;
+        animation-play-state:running;
+        opacity: 100%;
+        position: absolute;
+        left: 11.5%; top: 10%; 
+        width: 100%;
+        transform: translate(-50%, -50%);
+        color: rgb(0, 0, 0);
+        font-family:"misakigothic";
+        font-size: 50px;
+        text-align: center;
+        display: block;
+        user-select: none;
+        pointer-events:none;
+    }
+
+    #overlay #per {
+        animation-name: animOverlay;
+        animation-duration: 1s;
+        animation-fill-mode:forwards;
+        transform-origin: 0% 0%;
+        animation-play-state:running;
+        opacity: 100%;
+        position: absolute;
+        left: 11.5%; top: 17%;
+        width: 100%;
+        transform: translate(-50%, -50%);
+        color: rgb(0, 0, 0);
+        font-family:"misakigothic";
+        font-size: 50px;
+        text-align: center;
+        display: block;
+        user-select: none;
+        pointer-events:none;
+    }
+
+    #overlay #every.invisible {
+        animation-name: animInvisible;
+        animation-duration: 1s;
+        animation-fill-mode:forwards;
+        transform-origin: 0% 0%;
+        animation-play-state:running;
+    }
+
+    #overlay #per.invisible {
+        animation-name: animInvisible;
+        animation-duration: 1s;
+        animation-fill-mode:forwards;
+        transform-origin: 0% 0%;
+        animation-play-state:running;
+    }
+
+    #overlay #count.invisible {
+        animation-name: animInvisible;
+        animation-duration: 1s;
+        animation-fill-mode:forwards;
+        transform-origin: 0% 0%;
+        animation-play-state:running;
+    }
+
+    #overlay #coin.invisible {
+        animation-name: animInvisible;
+        animation-duration: 3s;
+        animation-fill-mode:forwards;
+        transform-origin: 0% 0%;
+        animation-play-state:running;
+    }
+
+    #overlay #yuka {
+        position: absolute;
+        margin-right: 50px;
+        width: 480px;
+        display: block;
+        user-select: none;
+        right: 0; bottom: -400px;
+        opacity: 0%;
+    }
+    #overlay #yuka.near {
+        animation-name: animYukaNear;
+        animation-duration: 5s;
+        animation-fill-mode:forwards;
+        transform-origin: 0% 0%;
+        animation-play-state:running;
+    }
+    #overlay #yuka.over {
+        opacity: 100%;
+    }
+    #overlay #yuka:hover.over:not(.click) {
+        animation-name: animYukaHover;
+        animation-duration: 2s;
+        animation-fill-mode:forwards;
+        transform-origin: 0% 0%;
+        animation-play-state:running;
+    }
+    #overlay #yuka.click {
+        opacity: 100%;
+        animation-name: animYukaJump;
+        animation-duration: 2s;
+        animation-fill-mode:forwards;
+        transform-origin: 0% 0%;
+        animation-play-state:running;
+    }
+
+    #overlay #end_title {
+        position: absolute;
+        left: 50%; top: 35%; 
+        width: 100%;
+        transform: translate(-50%, -50%);
+        color: rgb(255, 255, 255);
+        font-family:"misakigothic";
+        font-size: 60px;
+        text-align: center;
+        display: block;
+        user-select: none;
+        pointer-events:none;
+    }
+    #overlay #end_title.invisible {
+        pointer-events: none;
+        animation-name: animInvisible;
+        animation-duration: 1s;
+        animation-fill-mode:forwards;
+        transform-origin: 0% 0%;
+        animation-play-state:running;
+    }
+    #overlay #end_name {
+        position: absolute;
+        left: 50%; top: 55%; 
+        width: 100%;
+        transform: translate(-50%, -50%);
+        color: rgb(2555, 255, 255);
+        font-family:"misakigothic";
+        font-size: 120px;
+        text-align: center;
+        display: block;
+        user-select: none;
+        pointer-events:none;
+    }
+    #overlay #end_name.invisible {
+        pointer-events: none;
+        animation-name: animInvisible;
+        animation-duration: 1s;
+        animation-fill-mode:forwards;
+        transform-origin: 0% 0%;
+        animation-play-state:running;
+    }
+
+#end_overlay {
+    position: absolute;
+    left: 0; top: 0;
+    opacity: 0%;
+    background: rgb(255, 255, 255);
+    z-index: 100;
+    width: 100%; height: 100%;
+    user-select: none;
+    pointer-events: none;
+}
+
+#end_overlay.end {
+    opacity: 0%;
+    animation-name: animOverlay;
+    animation-duration: 7s;
+    animation-fill-mode:forwards;
+    transform-origin: 0% 0%;
+    animation-play-state:running;
+}
+
+#end_overlay.end2 {
+    opacity: 100%;
+    animation-name: animOverlay2;
+    animation-duration: 5s;
+    animation-fill-mode:forwards;
+    transform-origin: 0% 0%;
+    animation-play-state:running;
+}
+
+@keyframes animCoin {
+    0% { transform: scale(0.8, 0.8) translate(-50%, -50%); }
+    5% { transform: scale(1.2, 1.2) translate(-50%, -50%); }
+    10% { transform: scale(1, 1) translate(-50%, -50%); }
+    15% { transform: scale(1.1, 1.1) translate(-50%, -50%); }
+    20% { transform: scale(1, 1) translate(-50%, -50%); }
+    100% { transform: scale(1, 1) translate(-50%, -50%); }
+}
+
+@keyframes animLvButton {
+    0% { margin-right: -370; }
+    5% { margin-right: -50; }
+    20% { margin-right: -10; }
+    50% { margin-right: 0; }
+    100% {margin-right: 0;}
+}
+
+@keyframes animYukaNear {
+    0% { opacity: 0%; }
+    100% { opacity: 70%;}
+}
+
+@keyframes animYukaHover {
+    0% { bottom: -400px; }
+    20% { bottom: -250px; }
+    30% { bottom: -400px; }
+    70% { bottom: -400px; }
+    100% { bottom: -300px; }
+}
+
+@keyframes animYukaJump {
+    0% { bottom: -300px; }
+    20% { bottom: -400px; }
+    90% { bottom: -400px; }
+    100% { bottom: 100%; }
+}
+
+@keyframes animInvisible {
+    0% { opacity: 100%; }
+    100% { opacity: 0%; }
+}
+
+@keyframes animOverlay {
+    0% { opacity: 0%; }
+    100% { opacity: 100%; }
+}
+
+@keyframes animOverlay2 {
+    0% { opacity: 100%; }
+    100% { opacity: 0%; }
+}
+
+@keyframes animOverlay3 {
+    0% { opacity: 0%; }
+    100% { opacity: 30%; }
+}
