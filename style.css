@@ -382,6 +382,34 @@
         transform-origin: 0% 0%;
         animation-play-state:running;
     }
+    #overlay #cookie_box {
+        opacity: 80%;
+        background-color: rgb(168, 123, 64);
+    }
+    #overlay #cookie_box.invisible {
+        display: none;
+        opacity: 80%;
+        background-color: rgb(168, 123, 64);
+    }
+    #overlay #cookie_text {
+        margin-right: 50px;
+        margin-left: 10px;
+        font-size: 15px;
+        display:inline-block;
+        color:rgb(255, 255, 255);
+        height: 200;
+        width: 200;
+    }
+    #overlay #cookie_btn {
+        margin-top: 5px;
+        margin-bottom: 5px;
+        border-radius: 5px;
+        background-color: green;
+        text-align: center;
+        color: white;
+        height: 40px;
+        width: 60px;
+    }
 
 #end_overlay {
     position: absolute;

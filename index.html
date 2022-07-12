@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <title>ゆかりコインクリッカー</title>
         <script src="https://unpkg.com/three@0.142.0/build/three.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
     </head>
     <body id="body">
         <canvas id="graphics"></canvas>
@@ -24,6 +25,11 @@
             <div id="per">0 yc/c</div>
             <div id="end_title"></div>
             <div id="end_name"></div>
+
+            <div id="cookie_box">
+                <div id="cookie_text">当サイトではCookieを使用します</div>
+                <button id="cookie_btn">同意</button>
+            </div>
         </div>
         <div id="end_overlay"></div>
         <script src="./class.js"></script>

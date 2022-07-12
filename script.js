@@ -34,10 +34,12 @@ let char_list = [];
 let char_count = 0;
 
 //コインに関しての設定
+var coin_count = 0;
+var coin_every_second = 0; //コイン毎秒
+var coin_click_per = 1; //クリック毎コイン
+var cookieFlag = false;
+
 let coin_group_y = 0;
-let coin_count = 0;
-let coin_every_second = 0; //コイン毎秒
-let coin_click_per = 1; //クリック毎コイン
 let coin_change_check = 0;
 
 //ゆかりイベント(エンディング)に関して
@@ -60,7 +62,41 @@ let endwordFlag = false;
 let endedFlag = false;
 
 document.getElementById("coin").onclick = function(event) {
-    coin_count += coin_click_per;
+    if (cookieFlag) {
+        coin_count += coin_click_per;
+    }
+};
+
+const Cookie_onFlag = localStorage.getItem("Cookie_flag");
+if (Cookie_onFlag == null) {
+    document.getElementById("cookie_btn").onclick = function(event) {
+        const btn = document.getElementById("cookie_box");
+        btn.classList.add("invisible");
+        if (typeof Cookies.get("YCC_Count") == "undefined") {
+            coin_count = 0;
+            coin_every_second = 0; //コイン毎秒
+            coin_click_per = 1; //クリック毎コイン
+        }else {
+            coin_count = Number(Cookies.get("YCC_Count"));
+            coin_every_second = Number(Cookies.get("YCC_Every")); //コイン毎秒
+            coin_click_per = Number(Cookies.get("YCC_Per")); //クリック毎コイン
+        };
+        cookieFlag = true;
+        localStorage.setItem("Cookie_flag", "on");
+    };
+}else {
+    const Cookie_btn = document.getElementById("cookie_box");
+    Cookie_btn.classList.add("invisible");
+    if (typeof Cookies.get("YCC_Count") == "undefined") {
+        coin_count = 0;
+        coin_every_second = 0; //コイン毎秒
+        coin_click_per = 1; //クリック毎コイン
+    }else {
+        coin_count = Number(Cookies.get("YCC_Count"));
+        coin_every_second = Number(Cookies.get("YCC_Every")); //コイン毎秒
+        coin_click_per = Number(Cookies.get("YCC_Per")); //クリック毎コイン
+    };
+    cookieFlag = true;
 };
 
 let texture_count = 0;
@@ -132,6 +168,12 @@ function TextureAnim() {
 
 //コイン数管理
 function coin_count_check() {
+    if (cookieFlag) {
+        Cookies.set("YCC_Count", Math.floor(coin_count));
+        Cookies.set("YCC_Every", Math.floor(coin_every_second));
+        Cookies.set("YCC_Per", Math.floor(coin_click_per));
+    };
+
     document.getElementById("count").textContent = unit_conv(coin_count); //コイン数を反映
     document.getElementById("every").textContent = unit_conv(coin_every_second) + " yc/s";
     document.getElementById("per").textContent = unit_conv(coin_click_per) + " yc/c";
@@ -440,12 +482,14 @@ function allreset() {
             yuka_endFlag = false;
             yuka_trigger = false;
             pow_mgr = new PowerManager();
+            Cookies.set("YCC_Ended", "true");
             endedFlag = true;
             clearInterval(timerId);
         };
         per_count += 1;
     }, 16.666);
 };
+
 
 document.getElementById("kiri").onclick = function(event) {
     const kiri = document.getElementById("kiri");
