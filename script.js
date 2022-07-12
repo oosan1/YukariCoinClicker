@@ -297,7 +297,7 @@ function coin_num_check() {
     }else {
         koto.classList.remove("over");
     }
-    if (endedFlag || typeof Cookies.get("YCC_Count") != "undefined") {
+    if (endedFlag || typeof Cookies.get("YCC_Ended") != "undefined") {
         //何もしない
     }else {
         if (coin_count >= pow_mgr.yuka_near && coin_count < pow_mgr.yuka_over) {
@@ -564,7 +564,6 @@ document.getElementById("yuka").onclick = function(event) {
     const maki = document.getElementById("maki");
     const aka = document.getElementById("aka");
     const koto = document.getElementById("koto");
-    console.log(Cookies.get("YCC_Ended"));
     if (yuka.classList.contains("over") && yuka_trigger == false && typeof Cookies.get("YCC_Ended") == "undefined") {
         yuka_trigger = true;
         count.classList.add("invisible");
