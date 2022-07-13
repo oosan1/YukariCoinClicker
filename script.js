@@ -37,6 +37,7 @@ let char_count = 0;
 var coin_count = 0;
 var coin_every_second = 0; //コイン毎秒
 var coin_click_per = 1; //クリック毎コイン
+var pow_mgr = new PowerManager(20, 100, 1500, 10000, 50000, 200000);
 var cookieFlag = false;
 
 let coin_group_y = 0;
@@ -73,13 +74,18 @@ if (Cookie_onFlag == null) {
         const btn = document.getElementById("cookie_box");
         btn.classList.add("invisible");
         if (typeof Cookies.get("YCC_Count") == "undefined") {
-            coin_count = 0;
-            coin_every_second = 0; //コイン毎秒
-            coin_click_per = 1; //クリック毎コイン
+            //初期
         }else {
             coin_count = Number(Cookies.get("YCC_Count"));
             coin_every_second = Number(Cookies.get("YCC_Every")); //コイン毎秒
             coin_click_per = Number(Cookies.get("YCC_Per")); //クリック毎コイン
+            PowerCheck();
+            pow_mgr = new PowerManager(Cookies.get("PowPrice_kiri"),
+                                       Cookies.get("PowPrice_zun"),
+                                       Cookies.get("PowPrice_ita"),
+                                       Cookies.get("PowPrice_maki"),
+                                       Cookies.get("PowPrice_aka"),
+                                       Cookies.get("PowPrice_koto"));
         };
         cookieFlag = true;
         localStorage.setItem("Cookie_flag", "on");
@@ -88,22 +94,24 @@ if (Cookie_onFlag == null) {
     const Cookie_btn = document.getElementById("cookie_box");
     Cookie_btn.classList.add("invisible");
     if (typeof Cookies.get("YCC_Count") == "undefined") {
-        coin_count = 0;
-        coin_every_second = 0; //コイン毎秒
-        coin_click_per = 1; //クリック毎コイン
+        //初期
     }else {
         coin_count = Number(Cookies.get("YCC_Count"));
         coin_every_second = Number(Cookies.get("YCC_Every")); //コイン毎秒
         coin_click_per = Number(Cookies.get("YCC_Per")); //クリック毎コイン
+        PowerCheck();
+        pow_mgr = new PowerManager(Cookies.get("PowPrice_kiri"),
+                                   Cookies.get("PowPrice_zun"),
+                                   Cookies.get("PowPrice_ita"),
+                                   Cookies.get("PowPrice_maki"),
+                                   Cookies.get("PowPrice_aka"),
+                                   Cookies.get("PowPrice_koto"));
     };
     cookieFlag = true;
 };
 
 let texture_count = 0;
 setInterval(TextureAnim, 50);
-
-//レベルアップ基準
-let pow_mgr = new PowerManager();
 
 resize();
 window.addEventListener("resize", resize);
@@ -172,6 +180,13 @@ function coin_count_check() {
         Cookies.set("YCC_Count", Math.floor(coin_count));
         Cookies.set("YCC_Every", Math.floor(coin_every_second));
         Cookies.set("YCC_Per", Math.floor(coin_click_per));
+
+        Cookies.set("PowPrice_kiri", pow_mgr.kiri);
+        Cookies.set("PowPrice_zun", pow_mgr.zun);
+        Cookies.set("PowPrice_ita", pow_mgr.ita);
+        Cookies.set("PowPrice_maki", pow_mgr.maki);
+        Cookies.set("PowPrice_aka", pow_mgr.aka);
+        Cookies.set("PowPrice_koto", pow_mgr.koto);
     };
 
     document.getElementById("count").textContent = unit_conv(coin_count); //コイン数を反映
@@ -226,9 +241,9 @@ function coin_num_check() {
     };
 
     if (coin_count >= pow_mgr.kiri) {
-        kiri.classList.remove("unlock");
         kiri.classList.add("over");
         kiri.classList.add("unlock");
+        Cookies.set("PowUnlock_kiri", "true");
         kiri.title = unit_conv(pow_mgr.kiri) + "ゆかりコイン欲しい";
 
     }else if (kiri.classList.contains("unlock")) {
@@ -239,9 +254,9 @@ function coin_num_check() {
     }
 
     if (coin_count >= pow_mgr.zun) {
-        zun.classList.remove("unlock");
         zun.classList.add("over");
         zun.classList.add("unlock");
+        Cookies.set("PowUnlock_zun", "true");
         zun.title = unit_conv(pow_mgr.zun) + "ゆかりコイン欲しい";
     }else if (zun.classList.contains("unlock")) {
         zun.classList.remove("over");
@@ -251,9 +266,9 @@ function coin_num_check() {
     }
 
     if (coin_count >= pow_mgr.ita) {
-        ita.classList.remove("unlock");
         ita.classList.add("over");
         ita.classList.add("unlock");
+        Cookies.set("PowUnlock_ita", "true");
         ita.title = unit_conv(pow_mgr.ita) + "ゆかりコイン欲しい";
     }else if (ita.classList.contains("unlock")) {
         ita.classList.remove("over");
@@ -263,9 +278,9 @@ function coin_num_check() {
     }
 
     if (coin_count >= pow_mgr.maki) {
-        maki.classList.remove("unlock");
         maki.classList.add("over");
         maki.classList.add("unlock");
+        Cookies.set("PowUnlock_maki", "true");
         maki.title = unit_conv(pow_mgr.maki) + "ゆかりコイン欲しい";
     }else if (maki.classList.contains("unlock")) {
         maki.classList.remove("over");
@@ -275,9 +290,9 @@ function coin_num_check() {
     }
 
     if (coin_count >= pow_mgr.aka) {
-        aka.classList.remove("unlock");
         aka.classList.add("over");
         aka.classList.add("unlock");
+        Cookies.set("PowUnlock_aka", "true");
         aka.title = unit_conv(pow_mgr.aka) + "ゆかりコイン欲しい";
     }else if (aka.classList.contains("unlock")) {
         aka.classList.remove("over");
@@ -287,9 +302,9 @@ function coin_num_check() {
     }
 
     if (coin_count >= pow_mgr.koto) {
-        koto.classList.remove("unlock");
         koto.classList.add("over");
         koto.classList.add("unlock");
+        Cookies.set("PowUnlock_koto", "true");
         koto.title = unit_conv(pow_mgr.koto) + "ゆかりコイン欲しい";
     }else if (koto.classList.contains("unlock")) {
         koto.classList.remove("over");
@@ -490,64 +505,86 @@ function allreset() {
     }, 16.666);
 };
 
+function PowerCheck() {
+    const kiri = Cookies.get("PowUnlock_kiri");
+    const zun = Cookies.get("PowUnlock_zun");
+    const ita = Cookies.get("PowUnlock_ita");
+    const maki = Cookies.get("PowUnlock_maki");
+    const aka = Cookies.get("PowUnlock_aka");
+    const koto = Cookies.get("PowUnlock_koto");
+
+    const kiri_c = document.getElementById("kiri");
+    const zun_c = document.getElementById("zun");
+    const ita_c = document.getElementById("ita");
+    const maki_c = document.getElementById("maki");
+    const aka_c = document.getElementById("aka");
+    const koto_c = document.getElementById("koto");
+    
+    if (typeof kiri != "undefined") kiri_c.classList.add("unlock");
+    if (typeof zun != "undefined") zun_c.classList.add("unlock");
+    if (typeof ita != "undefined") ita_c.classList.add("unlock");
+    if (typeof maki != "undefined") maki_c.classList.add("unlock");
+    if (typeof aka != "undefined") aka_c.classList.add("unlock");
+    if (typeof koto != "undefined") koto_c.classList.add("unlock");
+};
 
 document.getElementById("kiri").onclick = function(event) {
     const kiri = document.getElementById("kiri");
-    if (kiri.classList.contains("over")) {
+    if (kiri.classList.contains("over") && cookieFlag) {
         coin_every_second += 1;
         coin_count -= pow_mgr.kiri;
         pow_mgr.kiri = Math.trunc(pow_mgr.kiri * 1.05);
-        char_list.push(new CreateChars("kiri", 25, char_geometry.kiri));
+        new CreateChars("kiri", 25, char_geometry.kiri);
     };
 };
 
 document.getElementById("zun").onclick = function(event) {
     const zun = document.getElementById("zun");
-    if (zun.classList.contains("over")) {
+    if (zun.classList.contains("over") && cookieFlag) {
         coin_every_second += 5;
         coin_count -= pow_mgr.zun;
         pow_mgr.zun = Math.trunc(pow_mgr.zun * 1.04);
-        char_list.push(new CreateChars("zun", 50, char_geometry.zun));
+        new CreateChars("zun", 50, char_geometry.zun);
     };
 };
 
 document.getElementById("ita").onclick = function(event) {
     const ita = document.getElementById("ita");
-    if (ita.classList.contains("over")) {
+    if (ita.classList.contains("over") && cookieFlag) {
         coin_click_per += 10;
         coin_count -= pow_mgr.ita;
         pow_mgr.ita = Math.trunc(pow_mgr.ita * 1.03);
-        char_list.push(new CreateChars("ita", 100, char_geometry.ita));
+        new CreateChars("ita", 100, char_geometry.ita);
     };
 };
 
 document.getElementById("maki").onclick = function(event) {
     const maki = document.getElementById("maki");
-    if (maki.classList.contains("over")) {
+    if (maki.classList.contains("over") && cookieFlag) {
         coin_every_second += 50;
         coin_count -= pow_mgr.maki;
         pow_mgr.maki = Math.trunc(pow_mgr.maki * 1.02);
-        char_list.push(new CreateChars("maki", 125, char_geometry.maki));
+        new CreateChars("maki", 125, char_geometry.maki);
     };
 };
 
 document.getElementById("aka").onclick = function(event) {
     const aka = document.getElementById("aka");
-    if (aka.classList.contains("over")) {
+    if (aka.classList.contains("over") && cookieFlag) {
         coin_every_second += 1000;
         coin_count -= pow_mgr.aka;
         pow_mgr.aka = Math.trunc(pow_mgr.aka * 1.01);
-        char_list.push(new CreateChars("aka", 175, char_geometry.aka));
+        new CreateChars("aka", 175, char_geometry.aka);
     };
 };
 
 document.getElementById("koto").onclick = function(event) {
     const koto = document.getElementById("koto");
-    if (koto.classList.contains("over")) {
+    if (koto.classList.contains("over") && cookieFlag) {
         coin_click_per += 2000;
         coin_count -= pow_mgr.koto;
         pow_mgr.koto = Math.trunc(pow_mgr.koto * 1.005);
-        char_list.push(new CreateChars("koto", 75, char_geometry.koto));
+        new CreateChars("koto", 75, char_geometry.koto);
     };
 };
 

@@ -18,13 +18,37 @@ class CreateCoin {
 
 //パワーアップの価格管理
 class PowerManager {
-    constructor() {
-        this.kiri = 20;
-        this.zun = 100;
-        this.ita = 1500;
-        this.maki = 10000;
-        this.aka = 50000;
-        this.koto = 200000;
+    constructor(kiri, zun, ita, maki, aka, koto) {
+        if (typeof kiri == "undefined") {
+            this.kiri = 20;
+        }else {
+            this.kiri = kiri;
+        };
+        if (typeof zun == "undefined") {
+            this.zun = 100;
+        }else {
+            this.zun = zun;
+        };
+        if (typeof ita == "undefined") {
+            this.ita = 1500;
+        }else {
+            this.ita = ita;
+        };
+        if (typeof maki == "undefined") {
+            this.maki = 10000;
+        }else {
+            this.maki = maki;
+        };
+        if (typeof aka == "undefined") {
+            this.aka = 50000;
+        }else {
+            this.aka = aka;
+        };
+        if (typeof koto == "undefined") {
+            this.koto = 200000;
+        }else {
+            this.koto = koto;
+        };
         this.yuka_near = 8000000000;
         this.yuka_over = 10000000000;
     };
